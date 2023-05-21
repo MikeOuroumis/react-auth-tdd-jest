@@ -1,46 +1,42 @@
-# Getting Started with Create React App
+# Leveraging Test-Driven Development in React Application Development
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This narrative explores the practical application of the test-driven development (TDD) methodology within a React project. The focus was on designing a workflow, implementing planned tests, and utilizing GitHub Actions for the automatic execution of tests.
 
-## Available Scripts
+## The TDD Workflow
 
-In the project directory, you can run:
+The developed application consists of three distinct pages, each corresponding to a unique component. A crucial part of the workflow was writing tests for each component, ensuring a comprehensive understanding of the necessary requirements and establishing component reliability from the onset.
 
-### `npm start`
+## The Development Process
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+Outlined below are the primary stages in the development process:
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+1. Creation of the GitHub repository.
+2. Committing the initial push.
+3. Setting up the development environment.
+4. Configuring CI workflows for GitHub.
+5. Initiation of React routing.
+6. The development and successful execution of tests for several user stories, such as accessing the homepage and logging out.
 
-### `npm test`
+## Guidelines for Project Execution
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+To interact with this project:
 
-### `npm run build`
+1. Use `git clone` to clone the repository to your local machine.
+2. Navigate to the project directory with `cd <project-directory>`.
+3. Use `yarn install` to install dependencies.
+4. The project can be run locally using `yarn start`.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## Guidelines for Test Execution
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+With the project running locally, tests can be executed with `yarn test`. This will execute all tests written for the application.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## Major Packages Used
 
-### `npm run eject`
+Below is a brief summary of the key packages used in this project:
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+- **Redux:** Utilized for state management across the application, providing a predictable state container that facilitated comprehension and efficient handling of state changes.
+- **Jest:** Used as the main testing framework, Jest provided an intuitive API for writing tests, supported asynchronous testing, and incorporated a built-in mocking library.
+- **Yarn:** Chosen over npm as the package manager, Yarn was instrumental in ensuring efficient dependency management, speedy installation, heightened performance, and robust security.
+- **React Router:** Implemented for managing routing within the application, React Router enabled dynamic routing, simplifying the development of single-page applications with smooth navigation and eliminating the need for page refreshing.
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+The incorporation of TDD in the development of a React application provided a valuable learning experience and demonstrated the methodology's potential for future projects.
