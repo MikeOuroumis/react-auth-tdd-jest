@@ -1,9 +1,15 @@
 import React, { useState } from 'react'
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
+import { useNavigate } from 'react-router-dom'
 import { login } from '../redux/slices/authSlice'
+import { RootState } from '../redux/store'
 
 function Login() {
   const dispatch = useDispatch()
+  const navigate = useNavigate()
+  const redirectPath = useSelector(
+    (state: RootState) => state.auth.redirectPath
+  )
 
   const [username, setUsername] = useState('')
   const [password, setPassword] = useState('')
@@ -16,6 +22,7 @@ function Login() {
       dispatch(login())
       setLoggedIn(true)
       setError('')
+      navigate(redirectPath)
     } else {
       setLoggedIn(false)
       setError('Wrong credentials')
