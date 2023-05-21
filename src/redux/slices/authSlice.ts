@@ -1,6 +1,10 @@
 /* eslint-disable no-param-reassign */
 import { createSlice } from '@reduxjs/toolkit'
 
+export interface AuthState {
+  isAuthenticated: boolean
+}
+
 const authSlice = createSlice({
   name: 'auth',
   initialState: { isAuthenticated: false },

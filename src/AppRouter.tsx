@@ -5,12 +5,16 @@ import {
   Routes,
   Navigate
 } from 'react-router-dom'
+import { useSelector } from 'react-redux'
 import Homepage from './pages/Homepage'
 import Login from './pages/Login'
 import Dashboard from './pages/Dashboard'
+import { RootState } from './redux/store'
 
 export function AppRoutes() {
-  const isAuthenticated = false
+  const isAuthenticated = useSelector(
+    (state: RootState) => state.auth.isAuthenticated
+  )
 
   return (
     <Routes>
