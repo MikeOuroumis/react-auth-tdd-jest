@@ -22,7 +22,7 @@ Outlined below are the primary stages in the development process:
 To interact with this project:
 
 1. Use `git clone` to clone the repository to your local machine.
-2. Navigate to the project directory with `cd <project-directory>`.
+2. Navigate to the project directory with `cd react-auth-tdd-jest`.
 3. Use `yarn install` to install dependencies.
 4. The project can be run locally using `yarn start`.
 
