@@ -4,21 +4,24 @@ function Login() {
   const [username, setUsername] = useState('')
   const [password, setPassword] = useState('')
   const [loggedIn, setLoggedIn] = useState(false)
+  const [error, setError] = useState('')
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault()
     if (username === 'uncinc' && password === 'letmein') {
       setLoggedIn(true)
+      setError('')
     } else {
       setLoggedIn(false)
+      setError('Wrong credentials')
     }
   }
 
   return (
     <div>
-      <h1>Login</h1>
+      <h1>Log in</h1>
       <form onSubmit={handleSubmit}>
-        <label>
+        <label htmlFor="usernameInput">
           Username
           <input
             id="usernameInput"
@@ -27,7 +30,7 @@ function Login() {
           />
         </label>
 
-        <label>
+        <label htmlFor="passwordInput">
           Password
           <input
             id="passwordInput"
@@ -38,6 +41,7 @@ function Login() {
         </label>
         {loggedIn && <p>Logged in</p>}
         <button type="submit">Log in</button>
+        {error && <p>{error}</p>}
       </form>
     </div>
   )
