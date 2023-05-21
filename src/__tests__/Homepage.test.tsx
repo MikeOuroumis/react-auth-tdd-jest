@@ -1,8 +1,11 @@
 import React from 'react'
 import { render, screen, cleanup } from '@testing-library/react'
-import { MemoryRouter, Route, Routes } from 'react-router-dom'
+import { MemoryRouter } from 'react-router-dom'
+import userEvent from '@testing-library/user-event'
 import '@testing-library/jest-dom/extend-expect'
-import Homepage from '../pages/Homepage' // adjust the import path as needed
+import { AppRoutes } from '../AppRouter'
+
+jest.mock('../pages/Dashboard', () => () => 'Mock Dashboard')
 
 describe('Homepage', () => {
   afterEach(cleanup)
@@ -13,9 +16,7 @@ describe('Homepage', () => {
     routes.forEach((route) => {
       const { unmount } = render(
         <MemoryRouter initialEntries={[route]}>
-          <Routes>
-            <Route path={route} element={<Homepage />} />
-          </Routes>
+          <AppRoutes />
         </MemoryRouter>
       )
 
@@ -25,5 +26,17 @@ describe('Homepage', () => {
 
       unmount()
     })
+  })
+
+  it('navigates to /dashboard from /home', () => {
+    render(
+      <MemoryRouter initialEntries={['/home']}>
+        <AppRoutes />
+      </MemoryRouter>
+    )
+
+    userEvent.click(screen.getByText(/Go to Dashboard/i))
+
+    expect(screen.getByText('Mock Dashboard')).toBeInTheDocument()
   })
 })
