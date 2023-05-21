@@ -1,11 +1,27 @@
 import React from 'react'
 import { render, screen, fireEvent } from '@testing-library/react'
 import '@testing-library/jest-dom/extend-expect'
-import Login from '../pages/Login' // adjust the import path as needed
+import { Provider } from 'react-redux'
+import configureStore from 'redux-mock-store'
+import { BrowserRouter as Router } from 'react-router-dom'
+
+import Login from '../pages/Login'
+
+const mockStore = configureStore([])
 
 describe('Login', () => {
   it('logs in the user when the correct username and password are entered', async () => {
-    render(<Login />)
+    const store = mockStore({
+      auth: { isAuthenticated: false }
+    })
+
+    render(
+      <Provider store={store}>
+        <Router>
+          <Login />
+        </Router>
+      </Provider>
+    )
 
     fireEvent.change(screen.getByLabelText(/username/i), {
       target: { value: 'uncinc' }
@@ -19,7 +35,17 @@ describe('Login', () => {
   })
 
   it('shows an error when wrong credentials are entered', async () => {
-    render(<Login />)
+    const store = mockStore({
+      auth: { isAuthenticated: false }
+    })
+
+    render(
+      <Provider store={store}>
+        <Router>
+          <Login />
+        </Router>
+      </Provider>
+    )
 
     fireEvent.change(screen.getByLabelText(/username/i), {
       target: { value: 'wrongUsername' }
@@ -27,7 +53,7 @@ describe('Login', () => {
     fireEvent.change(screen.getByLabelText(/password/i), {
       target: { value: 'wrongPassword' }
     })
-    fireEvent.click(screen.getByText(/Log in/i, { selector: 'button' }))
+    fireEvent.click(screen.getByText(/log in/i, { selector: 'button' }))
 
     expect(await screen.findByText(/wrong credentials/i)).toBeInTheDocument()
   })
