@@ -8,10 +8,10 @@ describe('Login', () => {
     render(<Login />)
 
     fireEvent.change(screen.getByLabelText(/username/i), {
-      target: { value: 'uncinc' },
+      target: { value: 'uncinc' }
     })
     fireEvent.change(screen.getByLabelText(/password/i), {
-      target: { value: 'letmein' },
+      target: { value: 'letmein' }
     })
     fireEvent.click(screen.getByText(/log in/i, { selector: 'button' }))
 
@@ -22,10 +22,10 @@ describe('Login', () => {
     render(<Login />)
 
     fireEvent.change(screen.getByLabelText(/username/i), {
-      target: { value: 'wrongUsername' },
+      target: { value: 'wrongUsername' }
     })
     fireEvent.change(screen.getByLabelText(/password/i), {
-      target: { value: 'wrongPassword' },
+      target: { value: 'wrongPassword' }
     })
     fireEvent.click(screen.getByText(/Log in/i, { selector: 'button' }))
 
