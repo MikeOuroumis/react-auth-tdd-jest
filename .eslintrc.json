@@ -9,6 +9,8 @@
     "sourceType": "module"
   },
   "rules": {
+    "semi": ["error", "never"],
+    "comma-dangle": ["error", "never"],
     "import/extensions": [
       "error",
       "ignorePackages",
