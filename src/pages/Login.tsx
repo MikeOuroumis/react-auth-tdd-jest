@@ -1,6 +1,16 @@
 import React, { useState } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
+import { useNavigate } from 'react-router-dom'
+import { login } from '../redux/slices/authSlice'
+import { RootState } from '../redux/store'
 
 function Login() {
+  const dispatch = useDispatch()
+  const navigate = useNavigate()
+  const redirectPath = useSelector(
+    (state: RootState) => state.auth.redirectPath
+  )
+
   const [username, setUsername] = useState('')
   const [password, setPassword] = useState('')
   const [loggedIn, setLoggedIn] = useState(false)
@@ -9,8 +19,10 @@ function Login() {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault()
     if (username === 'uncinc' && password === 'letmein') {
+      dispatch(login())
       setLoggedIn(true)
       setError('')
+      navigate(redirectPath)
     } else {
       setLoggedIn(false)
       setError('Wrong credentials')
@@ -39,8 +51,8 @@ function Login() {
             onChange={(e) => setPassword(e.target.value)}
           />
         </label>
-        {loggedIn && <p>Logged in</p>}
         <button type="submit">Log in</button>
+        {loggedIn && <p>Logged in</p>}
         {error && <p>{error}</p>}
       </form>
     </div>

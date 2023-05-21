@@ -1,17 +1,25 @@
-import React from 'react'
-import { MemoryRouter } from 'react-router-dom'
 import { render, screen } from '@testing-library/react'
-import '@testing-library/jest-dom/extend-expect'
+import { Provider } from 'react-redux'
+import { MemoryRouter } from 'react-router-dom'
+import configureStore from 'redux-mock-store'
 import { AppRoutes } from '../AppRouter'
 
-describe('Navigation', () => {
-  it('renders Dashboard when navigating to /dashboard', () => {
+const mockStore = configureStore([])
+
+describe('AppRoutes', () => {
+  it('redirects unauthenticated users from /dashboard to /login', () => {
+    const store = mockStore({
+      auth: { isAuthenticated: false }
+    })
+
     render(
-      <MemoryRouter initialEntries={['/dashboard']}>
-        <AppRoutes />
-      </MemoryRouter>
+      <Provider store={store}>
+        <MemoryRouter initialEntries={['/dashboard']}>
+          <AppRoutes />
+        </MemoryRouter>
+      </Provider>
     )
 
-    expect(screen.getByText(/Dashboard/i)).toBeInTheDocument()
+    expect(screen.getByRole('button', { name: /log in/i })).toBeInTheDocument()
   })
 })
