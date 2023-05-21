@@ -9,6 +9,16 @@
     "sourceType": "module"
   },
   "rules": {
+    "jsx-a11y/label-has-associated-control": [
+      2,
+      {
+        "labelComponents": [],
+        "labelAttributes": [],
+        "controlComponents": [],
+        "assert": "either", // here we specify what we want to enforce
+        "depth": 25
+      }
+    ],
     "semi": ["error", "never"],
     "comma-dangle": ["error", "never"],
     "import/extensions": [
@@ -29,7 +39,7 @@
   },
   "settings": {
     "import/resolver": {
-      "typescript": {} // this loads <rootdir>/tsconfig.json to eslint
+      "typescript": {}
     }
   },
   "env": {
