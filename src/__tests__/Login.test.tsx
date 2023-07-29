@@ -24,7 +24,7 @@ describe('Login', () => {
     )
 
     fireEvent.change(screen.getByLabelText(/username/i), {
-      target: { value: 'uncinc' }
+      target: { value: 'tdd' }
     })
     fireEvent.change(screen.getByLabelText(/password/i), {
       target: { value: 'letmein' }

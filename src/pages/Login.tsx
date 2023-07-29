@@ -18,7 +18,7 @@ function Login() {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault()
-    if (username === 'uncinc' && password === 'letmein') {
+    if (username === 'tdd' && password === 'letmein') {
       dispatch(login())
       setLoggedIn(true)
       setError('')
