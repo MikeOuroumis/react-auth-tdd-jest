@@ -26,6 +26,13 @@ To interact with this project:
 3. Use `yarn install` to install dependencies.
 4. The project can be run locally using `yarn start`.
 
+## User Login
+
+The project necessitates a user login. For the sake of the demo, please use the following credentials:
+
+Username: tdd
+Password: letmein
+
 ## Guidelines for Test Execution
 
 With the project running locally, tests can be executed with `yarn test`. This will execute all tests written for the application.
